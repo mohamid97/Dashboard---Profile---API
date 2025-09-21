@@ -39,6 +39,12 @@ use App\Http\Requests\Api\Admin\Slider\SliderUpdateRequest;
 use App\Http\Requests\Api\Admin\Social\SocialStoreRequest;
 use App\Http\Requests\Api\Admin\Users\UserStoreRequest;
 use App\Http\Requests\Api\Admin\Users\UserUpdateRequest;
+use App\Http\Requests\Api\Admin\Ourteam\OurteamStoreRequest;
+use App\Http\Requests\Api\Admin\Ourteam\OurteamUpdateRequest;
+use App\Http\Requests\Api\Admin\Mediaimage\MediaimageStoreRequest;
+use App\Http\Requests\Api\Admin\Mediaimage\MediaimageUpdateRequest;
+use App\Http\Requests\Api\Admin\Mediaimage\MediavideoStoreRequest;
+use App\Http\Requests\Api\Admin\Mediaimage\MediavideoUpdateRequest;
 use App\Models\Api\Admin\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +55,7 @@ class ModelRequestFactory
 {
     public static function validate(string $model, string $action, Request $request): void
     {
+       
         $map = [
             'user' => [
                 'store' => UserStoreRequest::class,
@@ -130,22 +137,22 @@ class ModelRequestFactory
                 'store'=> SettingUpdateStore::class
             ],
             'ourteam'=>[
-                'store'=> \App\Http\Requests\Api\Admin\Ourteam\OurteamStoreRequest::class,
-                'update'=> \App\Http\Requests\Api\Admin\Ourteam\OurteamUpdateRequest::class
+                'store'=> OurteamStoreRequest::class,
+                'update'=>OurteamUpdateRequest::class
             ],
             'mediaimage'=>[
-                'store'=> \App\Http\Requests\Api\Admin\MediaImage\MediaImageStoreRequest::class,
-                'update'=> \App\Http\Requests\Api\Admin\MediaImage\MediaImageUpdateRequest::class
+                'store'=> MediaImageStoreRequest::class,
+                'update'=> MediaImageUpdateRequest::class
             ],
             'mediavideo'=>[
-                'store'=> \App\Http\Requests\Api\Admin\MediaImage\MediaVideoStoreRequest::class,
-                'update'=> \App\Http\Requests\Api\Admin\MediaImage\MediaVideoUpdateRequest::class
+                'store'=> MediaVideoStoreRequest::class,
+                'update'=> MediaVideoUpdateRequest::class
             ],
             
 
         ];
 
-         
+        
 
         $model = strtolower($model);
         if (!isset($map[$model][$action])) {
@@ -153,6 +160,8 @@ class ModelRequestFactory
             return; 
         }
       
+
+       
 
        
         $requestClass = app($map[$model][$action]);

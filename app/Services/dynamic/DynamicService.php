@@ -35,6 +35,13 @@ class DynamicService
                 $data = $query->get();
             }
 
+            if($request->has('type') && $request->type){
+                $query->where('type', $request->type);
+            }
+            // if($request->has('search') && $request->search){
+            //     $query->where('type', $request->search);
+            // }
+
             
             
             return $this->formatResponse($data , $columns , $isPaginated);

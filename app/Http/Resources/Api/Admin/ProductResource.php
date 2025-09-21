@@ -16,20 +16,8 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        if(isset($this->images) && is_array($this->images)) {
-            $this->images = array_map(function($image) {
-                return $this->getImageUrl($image);
-            }, $this->images);
-        }
 
-        $category = null;
-        if ( $this->category) {
-            $category = [
-                'id' => $this->category->id,
-                'name' => $this->category->title,
-                'slug' => $this->category->slug
-            ];
-        }
+
       
     return [      
         'id' => $this->id,
@@ -40,7 +28,6 @@ class ProductResource extends JsonResource
         'order' => $this->order,
         'small_des' => $this->getColumnLang('small_des'),
         'des' => $this->getColumnLang('des'),
-        'images' => $this->images,
         'image' => $this->getImageUrl($this->product_image),
         'breadcrumb' => $this->getImageUrl($this->breadcrumb),
         'title_image' => $this->getColumnLang('title_image'),
@@ -48,7 +35,13 @@ class ProductResource extends JsonResource
         'meta_title' => $this->getColumnLang('meta_title'),
         'meta_des' => $this->getColumnLang('meta_des'),
         'order'=>$this->order,
-        'category'=>$category,
+        'category' => $this->whenLoaded('category', function () {
+                    return [
+                        'id' => $this->category->id,
+                        'name' => $this->category->title,
+                        'slug' => $this->category->slug,
+                    ];
+        }),
         'barcode'=>$this->barcode,
         'status'=>$this->status,
         'created_at' => $this->created_at?->format('Y-m-d'),

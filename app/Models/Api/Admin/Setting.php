@@ -11,14 +11,10 @@ class Setting extends Model implements TranslatableContract
     use HasFactory , Translatable;
 
     protected $fillable = ['work_hours' , 'icon' , 'favicon'];
-    public $translatedAttributes = ['title' , 'breif'];
+    public $translatedAttributes = ['title' , 'breif' , 'meta_title' , 'meta_title'];
     public $translationForeignKey = 'setting_id';
     public $translationModel = 'App\Models\Api\Admin\SettingTranslation';
 
-    protected function serializeDate(\DateTimeInterface $date)
-    {
-      return $date->format('Y-m-d'); 
-    }
 
 
     

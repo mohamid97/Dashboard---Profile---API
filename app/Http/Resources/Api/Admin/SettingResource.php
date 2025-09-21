@@ -17,7 +17,7 @@ class SettingResource extends JsonResource
     {
         return [
             'work_hours'=>$this->work_hours,
-            'name'=>$this->getColumnLang('name'),
+            'title'=>$this->getColumnLang('name'),
             'breif'=>$this->getColumnLang('breif'),
             'meta_des'=>$this->getColumnLang('meta_des'),
             'meta_title'=>$this->getColumnLang('meta_title'),

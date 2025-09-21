@@ -20,6 +20,7 @@ class AchivementResource extends JsonResource
             'id' => $this->id,
             'achivement_image' => $this->getImageUrl($this->achivement_image),
             'link' => $this->link,
+            'number'=>$this->number,
             'breadcrumb' => $this->getImageUrl($this->breadcrumb),
             'title' => $this->getColumnLang('title'),
             'small_des' => $this->getColumnLang('small_des'),

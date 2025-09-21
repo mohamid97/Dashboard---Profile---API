@@ -9,7 +9,7 @@ use Astrotomic\Translatable\Translatable;
 class Ourwork extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
-    protected $fillable = ['ourwork_image' , 'link','type','breadcrumb','clinet_id','category_id' , 'date'];
+    protected $fillable = ['ourwork_image' , 'link','type','breadcrumb','client_id','category_id' , 'date'];
     public $translatedAttributes = ['title' , 'des' , 'meta_title' , 'meta_des' , 'slug','small_des' , 'location'];
     public $translationForeignKey = 'ourwork_id';
     public $translationModel = 'App\Models\Api\Admin\OurworkTranslation';
@@ -22,7 +22,7 @@ class Ourwork extends Model implements TranslatableContract
     }
 
     public function client(){
-        return $this->belongsTo(Client::class , 'clinet_id' , 'id');
+        return $this->belongsTo(Client::class , 'client_id' , 'id');
     }
 
     public function category(){

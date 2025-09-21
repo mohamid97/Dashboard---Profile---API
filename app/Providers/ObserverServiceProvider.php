@@ -22,6 +22,7 @@ class ObserverServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
         $observerService = $this->app->make(ObserverService::class);
         $observerService->registerObservers('admin');
     }

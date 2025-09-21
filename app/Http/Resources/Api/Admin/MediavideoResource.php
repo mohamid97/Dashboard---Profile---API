@@ -18,7 +18,7 @@ class MediavideoResource extends JsonResource
             'id' => $this->id,
             'title' => $this->getColumnLang('title'),
             'des' => $this->getColumnLang('des'),
-            'image' => $this->link,
+            'link' => $this->link,
             'created_at' => $this->created_at?->format('Y-m-d'),
             'updated_at' => $this->updated_at?->format('Y-m-d'),
         ];

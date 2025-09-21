@@ -17,6 +17,7 @@ class ClientResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'type'=>$this->type,
             'image' => $this->getImageUrl($this->image),
             'title' => $this->getColumnLang('title'),
             'des' => $this->getColumnLang('des'),

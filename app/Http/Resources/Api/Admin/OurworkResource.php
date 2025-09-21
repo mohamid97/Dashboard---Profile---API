@@ -16,7 +16,8 @@ class OurworkResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
+        
+    
 
         return [
             'id' => $this->id,
@@ -31,8 +32,6 @@ class OurworkResource extends JsonResource
             'des' => $this->getColumnLang('des'),
             'meta_title' => $this->getColumnLang('meta_title'),
             'meta_des' => $this->getColumnLang('meta_des'),
-            'created_at' => $this->created_at ? $this->created_at->format('Y-m-d') : null,
-            'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d') : null,
             'client' => $this->whenLoaded('client' , function(){
                         return [
                             'id'=>$this->client ? $this->client->id : null,
@@ -46,6 +45,9 @@ class OurworkResource extends JsonResource
                             'name'=>$this->category ? $this->category->name : null,
                         ];
             }),
+            'created_at' => $this->created_at ? $this->created_at->format('Y-m-d') : null,
+            'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d') : null,
+
         ];
     }
 }

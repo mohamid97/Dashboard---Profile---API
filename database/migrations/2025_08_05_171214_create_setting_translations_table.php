@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('setting_id');
             $table->string('locale')->index();
             $table->unique(['setting_id', 'locale']);
-            $table->string('name');
+            $table->string('title');
             $table->text('breif')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_des')->nullable();

@@ -12,24 +12,16 @@ class OurworkService extends BaseModelService{
     use StoreMultiLang , HandlesImage;
     protected string $modelClass = Ourwork::class;
 
-    private function uploadOurworkImages(&$data){
-        
-        $data['images'] = array_map(function($image) {
-            return $this->uploadImage($image, 'uploads/ourworks');
-        }, $data['images']);
-        return $data['images'];
 
-        
-    }
 
 
     public function all($request){
-        $ourworks = parent::all($request);
+        $ourworks = $this->modelClass::with(['client' , 'category'])->get($request);
         return $ourworks;
     }
 
     public function view($id){
-        $details = parent::view($id);
+        $details = $this->modelClass::with(['client' , 'category'])->findOrFail($id);
         return $details;
     }
 
@@ -37,9 +29,9 @@ class OurworkService extends BaseModelService{
     {
 
         $this->uploadSingleImage(['breadcrumb' , 'ourwork_image'], 'uploads/ourworks');   
-        $ourwork = parent::store($this->getBasicColumn(['ourwork_image','link','type' ,'breadcrumb' ,'clinet_id','category_id','date']));
+        $ourwork = parent::store($this->getBasicColumn(['ourwork_image','link','type' ,'breadcrumb' ,'client_id','category_id','date']));
         $this->processTranslations($ourwork, $this->data, ['title', 'des','meta_des' , 'meta_title' , 'slug' , 'small_des' , 'location']);  
-        return $ourwork;
+        return $ourwork->load(['category' , 'client']);
         
     }
     
@@ -49,9 +41,9 @@ class OurworkService extends BaseModelService{
 
         $this->uploadSingleImage(['breadcrumb' , 'ourwork_image'], 'uploads/ourworks');
 
-        $ourwork = parent::update($id , $this->getBasicColumn(['ourwork_image','link', 'type','breadcrumb' ,'clinet_id','category_id','date']));
+        $ourwork = parent::update($id , $this->getBasicColumn(['ourwork_image','link', 'type','breadcrumb' ,'client_id','category_id','date']));
         $this->processTranslations($ourwork, $this->data, ['title', 'des','meta_des' , 'meta_title' , 'slug' , 'small_des' , 'location']);
-        return $ourwork;
+        return $ourwork->load(['category' , 'client']);
         
     }
 

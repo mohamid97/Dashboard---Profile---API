@@ -7,11 +7,14 @@ use App\Services\BaseModelService;
 use App\Traits\StoreMultiLang;
 
 class SettingService extends BaseModelService{
+
+    
     use StoreMultiLang;
-    protected  $modelClass = Setting::class;
+    protected string $modelClass = Setting::class;
 
 
     public function all($request){
+  
         $allDetails = $this->modelClass::first();
         return $allDetails;
     }
@@ -19,6 +22,7 @@ class SettingService extends BaseModelService{
 
     public function store()
     {
+   
         $this->uploadSingleImage(['favicon' , 'icon'] , 'uploads/setting');
         $setting = $this->modelClass::updateOrCreate(['id' => 1] , $this->data);
         $this->processTranslations($setting, $this->data, ['name', 'breif' , 'meta_title' , 'meta_des']);  
