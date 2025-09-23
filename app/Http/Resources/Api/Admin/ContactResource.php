@@ -19,10 +19,12 @@ class ContactResource extends JsonResource
     public function toArray(Request $request): array
     {
         
+    
         return [
             'title' => $this->getColumnLang('title'),
             'des' => $this->getColumnLang('des'),
             'image' => $this->getImageUrl($this->image),
+            'breadcrumb'=>$this->getImageUrl($this->breadcrumb),
             'title_image' => $this->getColumnLang('title_image'),
             'alt_image' => $this->getColumnLang('alt_image'),
             'meta_title' => $this->getColumnLang('meta_title'),

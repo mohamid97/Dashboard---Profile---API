@@ -27,8 +27,8 @@ class EventUpdateRequest extends FormRequest
     {
         return [
             'id' => 'required|integer|exists:events,id',
-            'event_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'breadcrumb' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'event_image' => 'nullable|image|mimes:jpeg,webp,png,jpg,gif,svg|max:2048',
+            'breadcrumb' => 'nullable|image|mimes:jpeg,webp,png,jpg,gif,svg|max:2048',
             'date' => 'nullable|date',
             'meta_title.*' => 'nullable|string|max:255',
             'meta_des.*' => 'nullable|string|max:255',

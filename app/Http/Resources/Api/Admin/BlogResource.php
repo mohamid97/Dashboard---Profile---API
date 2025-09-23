@@ -25,7 +25,14 @@ class BlogResource extends JsonResource
             'des' => $this->getColumnLang('des'),
             'blog_image' => $this->getImageUrl($this->blog_image),
             'breadcrumb' => $this->getImageUrl($this->breadcrumb),
-            'category_id' => new CategoryResource(Category::find($this->category_id)),
+            'category_id' => $this->category_id,
+            'category' => $this->whenLoaded('category' , function(){
+                    return [
+                        'id'=>$this->category ? $this->category->id : null,
+                        'title'=>$this->category ? $this->category->title : null,
+                        'slug' => $this->slug  ? $this->category->slug : null
+                    ];
+            }),
             'meta_title' => $this->getColumnLang('meta_title'),
             'meta_des' => $this->getColumnLang('meta_des'),
             'alt_image' => $this->getColumnLang('alt_image'),

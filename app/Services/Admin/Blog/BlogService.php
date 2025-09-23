@@ -10,6 +10,7 @@ class BlogService extends BaseModelService{
     
     use StoreMultiLang , HandlesImage;
     protected string $modelClass = Blog::class;
+    protected array  $relations  = ['category'];
 
 
 

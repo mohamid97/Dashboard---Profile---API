@@ -35,7 +35,7 @@ class OurworkResource extends JsonResource
             'client' => $this->whenLoaded('client' , function(){
                         return [
                             'id'=>$this->client ? $this->client->id : null,
-                            'name'=>$this->client ? $this->client->name : null,
+                            'title'=>$this->client ? $this->client->title : null,
                             'logo'=>$this->client ? $this->getImageUrl($this->client->logo) : null,
                         ];
             }),
@@ -43,6 +43,7 @@ class OurworkResource extends JsonResource
                         return [
                             'id'=>$this->category ? $this->category->id : null,
                             'title'=>$this->category ? $this->category->title : null,
+                            'slug' => $this->slug  ? $this->category->slug : null
                         ];
             }),
             'created_at' => $this->created_at ? $this->created_at->format('Y-m-d') : null,

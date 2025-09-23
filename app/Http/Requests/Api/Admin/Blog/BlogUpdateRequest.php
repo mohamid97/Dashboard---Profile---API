@@ -29,8 +29,8 @@ class BlogUpdateRequest extends FormRequest
         return [
             'id'=> 'required|integer|exists:blogs,id',
             'category_id' => 'nullable|integer|exists:categories,id',
-            'blog_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'breadcrumb' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'blog_image' => 'nullable|image|mimes:jpeg,webp,png,jpg,gif,svg|max:2048',
+            'breadcrumb' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:2048',
             'meta_title.*' => 'nullable|string|max:255',
             'meta_des.*' => 'nullable|string|max:255',
             'alt_image' => 'nullable|string|max:255',

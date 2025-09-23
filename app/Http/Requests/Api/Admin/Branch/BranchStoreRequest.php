@@ -27,7 +27,7 @@ class BranchStoreRequest extends FormRequest
     {
         return [
             'images'=> 'nullable|array',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'required|image|mimes:jpeg,png,webp,jpg,gif,svg|max:2048',
             'numbers'=> 'required|array',
             'numbers.*'=> 'required|min:10|max:14',
             'location'=>'required|max:2000',

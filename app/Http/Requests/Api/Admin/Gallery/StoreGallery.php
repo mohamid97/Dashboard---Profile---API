@@ -26,7 +26,7 @@ class StoreGallery extends FormRequest
     {
         return [
            'new_images' => 'nullable|array',
-           'new_images.*.file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'new_images.*.file' => 'required|image|mimes:jpeg,webp,png,jpg,gif,svg|max:2048',
            'new_images.*.order' => 'nullable|integer',
            'old_order' =>'nullable|array',
            'old_order.*id' => 'nullable|integer',

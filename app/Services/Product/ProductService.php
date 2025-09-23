@@ -10,6 +10,7 @@ class ProductService extends BaseModelService
 {
     use StoreMultiLang , HandlesImage;
     protected string $modelClass = Product::class;
+    protected array  $relations  = ['category'];
 
     public function all($request){
         $product = parent::all($request);

@@ -25,6 +25,13 @@ class ProductResource extends JsonResource
         'slug' => $this->getColumnLang('slug'),
         'price' => $this->price,
         'category_id' => $this->category_id,
+        'category' => $this->whenLoaded('category' , function(){
+                return [
+                    'id'=>$this->category ? $this->category->id : null,
+                    'title'=>$this->category ? $this->category->title : null,
+                    'slug' => $this->slug  ? $this->category->slug : null
+                ];
+        }),
         'order' => $this->order,
         'small_des' => $this->getColumnLang('small_des'),
         'des' => $this->getColumnLang('des'),
