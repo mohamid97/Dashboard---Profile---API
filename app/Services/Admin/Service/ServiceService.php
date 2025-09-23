@@ -10,9 +10,11 @@ class ServiceService extends BaseModelService{
     
     use StoreMultiLang , HandlesImage;
     protected string $modelClass = Service::class;
+    protected array $relations = ['category'];
 
 
     public function all($request){
+
         $serivces = parent::all($request);
         return $serivces;
     }

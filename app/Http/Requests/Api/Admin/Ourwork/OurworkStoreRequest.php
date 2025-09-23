@@ -25,6 +25,7 @@ class OurworkStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+       
         return [
             
             'breadcrumb'=>'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:5000',
@@ -38,7 +39,7 @@ class OurworkStoreRequest extends FormRequest
             'meta_des.*' => 'nullable|max:255',
             'link' => 'nullable|url|max:255', 
             'type'=>'required|in:ourworks,ourprojects',
-            'clinet_id'=>'nullable|exists:clients,id', 
+            'client_id'=>'nullable|exists:clients,id', 
             'category_id'=>'nullable|exists:categories,id',
             'date'=>'nullable|date',
             'small_des.*'=>'nullable|max:5000',

@@ -42,7 +42,7 @@ class OurworkResource extends JsonResource
             'category' => $this->whenLoaded('category' , function(){
                         return [
                             'id'=>$this->category ? $this->category->id : null,
-                            'name'=>$this->category ? $this->category->name : null,
+                            'title'=>$this->category ? $this->category->title : null,
                         ];
             }),
             'created_at' => $this->created_at ? $this->created_at->format('Y-m-d') : null,

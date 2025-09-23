@@ -25,6 +25,9 @@ Route::prefix('v1')->middleware('ckeckLang')->group(function () {
         Route::post('gallery/store','CrudController@storeGallery')->middleware('checkPermision:create');
         Route::post('gallery/all','CrudController@viewGallery')->middleware('checkPermision:view');
 
+        // home page 
+    Route::get('/home' ,'HomeController@index');
+
 
 
 

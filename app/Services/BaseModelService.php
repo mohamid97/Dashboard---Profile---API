@@ -13,6 +13,7 @@ abstract class BaseModelService
     use HandlesImage;
     protected string $modelClass;
     protected array $data = [];
+    protected array $relations = [];
 
 
     public function setData(array $data): self
@@ -22,7 +23,13 @@ abstract class BaseModelService
     }
     public function all($request){
 
-       $query = $this->modelClass::query();
+        if(is_array($this->relations) && !empty($this->relations)){
+           $query = $this->modelClass::with($this->relations);
+        }else{
+            $query = $this->modelClass::query();
+        }
+
+       
         if (!empty($request['search']) && method_exists($this, 'applySearch')) {
             $query = $this->applySearch($query, $request['search']);
         }

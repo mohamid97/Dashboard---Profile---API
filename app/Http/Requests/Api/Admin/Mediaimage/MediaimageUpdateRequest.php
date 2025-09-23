@@ -27,7 +27,7 @@ class MediaimageUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'image'=>'required|image|mimes:jpeg,png,webp,jpg,gif|max:5000',
+           'image'=>'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:5000',
            'title'=>'nullable|array|min:1',
            'title.*'=>'nullable|string|max:255',
            'des'=>'nullable|array|min:1',

@@ -26,6 +26,20 @@ class DynamicService
             if ($request->has('columns') && is_array($request->columns) && !empty($request->columns)) {
                 $columns = $request->columns;
             }
+
+            
+            if($request->has('type') && $request->type){
+                
+                $query = $query->where('type', $request->type);
+            }
+
+            if($request->has('search') && $request->search){
+                
+                $query->whereHas('translation', fn($q) => 
+                    $q->where('title', 'LIKE', "%{$request->search}%")
+                    ->orWhere('slug', 'LIKE', "%{$request->search}%")
+                );
+            }
             $isPaginated = false;
             if ($request->has('pagination') && $request->pagination > 0) {
                 $data = $query->paginate($request->pagination);
@@ -35,12 +49,7 @@ class DynamicService
                 $data = $query->get();
             }
 
-            if($request->has('type') && $request->type){
-                $query->where('type', $request->type);
-            }
-            // if($request->has('search') && $request->search){
-            //     $query->where('type', $request->search);
-            // }
+
 
             
             

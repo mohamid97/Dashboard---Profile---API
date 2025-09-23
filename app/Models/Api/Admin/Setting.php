@@ -11,7 +11,7 @@ class Setting extends Model implements TranslatableContract
     use HasFactory , Translatable;
 
     protected $fillable = ['work_hours' , 'icon' , 'favicon'];
-    public $translatedAttributes = ['title' , 'breif' , 'meta_title' , 'meta_title'];
+    public $translatedAttributes = ['title' , 'breif' , 'meta_des' , 'meta_title'];
     public $translationForeignKey = 'setting_id';
     public $translationModel = 'App\Models\Api\Admin\SettingTranslation';
 

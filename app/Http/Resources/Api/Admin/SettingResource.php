@@ -17,11 +17,11 @@ class SettingResource extends JsonResource
     {
         return [
             'work_hours'=>$this->work_hours,
-            'title'=>$this->getColumnLang('name'),
+            'title'=>$this->getColumnLang('title'),
             'breif'=>$this->getColumnLang('breif'),
             'meta_des'=>$this->getColumnLang('meta_des'),
             'meta_title'=>$this->getColumnLang('meta_title'),
-            'logo'=>$this->getImageUrl($this->logo),
+            'logo'=>$this->getImageUrl($this->icon),
             'favicon'=>$this->getImageUrl($this->favicon)
         ];
     }

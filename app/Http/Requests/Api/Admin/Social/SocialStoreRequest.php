@@ -22,7 +22,7 @@ class SocialStoreRequest extends FormRequest
 
         $platforms = [
             'facebook', 'twitter', 'instagram', 'youtube', 'linkedin',
-            'tiktok', 'pinterest', 'snapchat', 'email', 'phone'
+            'tiktok', 'pinterest', 'snapchat', 'email', 'phone','whatsapp'
         ];
 
         foreach ($platforms as $platform) {

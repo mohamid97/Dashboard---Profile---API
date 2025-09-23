@@ -27,7 +27,7 @@ class SliderUpdateRequest extends FormRequest
     {
         return [
             'id' => 'required|exists:sliders,id',
-            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image'=>'nullable|image|mimes:jpeg,webp,png,jpg,gif',
             'order'=>'nullable|integer|unique:sliders,order,except,id',
             'title.*'=>'nullable|max:255',
             'small_des.*'=>'nullable|max:255',

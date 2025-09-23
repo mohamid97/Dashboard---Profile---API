@@ -15,18 +15,17 @@ trait StoreMultiLang{
         
         foreach ($this->langs as $lang) {
             foreach ($attributes as $attribute) {
+               
                 if (isset($data[$attribute][$lang->code])) {
                     $model->{$attribute.':'.$lang->code} = $data[$attribute][$lang->code];
-                }else{
-                    
+                }else{               
                     $model->{$attribute.':'.$lang->code} = null;
                 }
             }
         }
-
         $model->save();
   
-       
+      
         return $model;
     }
 

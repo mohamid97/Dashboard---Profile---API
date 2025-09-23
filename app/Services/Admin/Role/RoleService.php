@@ -20,6 +20,12 @@ class RoleService extends BaseModelService
 
 
     public function update($id){
+                    
+        if($id == 1){
+            throw new \Exception(__('main.can_not_delete', ['text' => "protected role: Admin"]));
+        }
+
+        
         $role = parent::update($id , $this->getBasicColumn(['name']));
         if (!empty($this->data['permissions']) && is_array($this->data['permissions'])) {
             $role->syncPermissions($this->data['permissions']);

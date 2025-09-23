@@ -11,12 +11,15 @@ use Illuminate\Database\Eloquent\Builder;
 class OurworkService extends BaseModelService{
     use StoreMultiLang , HandlesImage;
     protected string $modelClass = Ourwork::class;
+    protected array  $relations  = ['client' , 'category'];
+
 
 
 
 
     public function all($request){
-        $ourworks = $this->modelClass::with(['client' , 'category'])->get($request);
+        
+        $ourworks = parent::all($request);  
         return $ourworks;
     }
 
@@ -27,11 +30,11 @@ class OurworkService extends BaseModelService{
 
     public function store()
     {
-
+    
         $this->uploadSingleImage(['breadcrumb' , 'ourwork_image'], 'uploads/ourworks');   
         $ourwork = parent::store($this->getBasicColumn(['ourwork_image','link','type' ,'breadcrumb' ,'client_id','category_id','date']));
         $this->processTranslations($ourwork, $this->data, ['title', 'des','meta_des' , 'meta_title' , 'slug' , 'small_des' , 'location']);  
-        return $ourwork->load(['category' , 'client']);
+        return $ourwork;
         
     }
     

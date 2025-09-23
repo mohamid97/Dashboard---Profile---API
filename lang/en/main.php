@@ -23,7 +23,8 @@ return [
     'product_not_found_in_cart'=>":product Not Found In Cart",
     'product_less_quntity'=>':product Quantity In Cart Less Than Your Quntity',
     'can_not_delete'=>'Cannot delete :text',
-    'no_model'=>'No Model Sent'
+    'no_model'=>'No Model Sent',
+    'dashboard_stat' => 'Dashboard Statistics'
 
     
 ];

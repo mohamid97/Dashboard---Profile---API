@@ -29,7 +29,7 @@ class SettingUpdateStore extends FormRequest
     public function rules(): array
     {
         return [
-            'work_hours'=>'required|string|max:255',
+            'work_hours'=>'nullable|string|max:255',
             'title'=>'required|array',
             'title.*'=>'required|string|max:255',
             'breif.*'=>'nullable|string|max:50000',

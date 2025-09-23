@@ -21,15 +21,13 @@ class SettingService extends BaseModelService{
 
 
     public function store()
-    {
-   
+    {   
         $this->uploadSingleImage(['favicon' , 'icon'] , 'uploads/setting');
         $setting = $this->modelClass::updateOrCreate(['id' => 1] , $this->data);
-        $this->processTranslations($setting, $this->data, ['name', 'breif' , 'meta_title' , 'meta_des']);  
+        $this->processTranslations($setting, $this->data, ['title', 'breif' , 'meta_title' , 'meta_des']);  
         return $setting;
              
     }
-
 
     
 

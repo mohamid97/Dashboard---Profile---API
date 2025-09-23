@@ -14,17 +14,29 @@ class MetasettingService extends BaseModelService
 
    public function store()
    {
+   
 
         foreach ($this->data['models'] as $key => $value) {
-            $metasetting = MetaSetting::where('name', $this->data['models'][$key])->first();
-                $this->uploadSingleImage(['banner'], 'uploads/banners'); 
-            if ($metasetting) {
-                $metasetting->update(['name' => $this->data['models'][$key]]);
-            } else {
-                $metasetting = new MetaSetting(['name' => $this->data['models'][$key]]);
+   
+            $metasetting = MetaSetting::where('name', $key)->first();
+            $banner = $this->uploadSingleImage(['banner'], 'uploads/banners'); 
+               
+                
+            if (isset($metasetting)) {
+                $metasetting->update(['name' => $key , 'banner'=>($banner) ? $banner :  $metasetting->banner]);
+            } else {  
+                        
+                $metasetting = MetaSetting::create([
+                    'name'   => $key,
+                    'banner' => $banner
+                ]);             
+               
             }
+            
+            
             $this->processTranslations($metasetting, $this->data['models'][$key], ['meta_title',  'meta_des']);
         }
+
         return $this->modelClass::all();
 
        
