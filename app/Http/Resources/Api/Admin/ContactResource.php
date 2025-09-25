@@ -36,5 +36,7 @@ class ContactResource extends JsonResource
         ];
                 
     }
+
+    
     
 }

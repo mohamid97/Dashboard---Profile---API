@@ -24,7 +24,8 @@ return [
     'product_less_quntity'=>':product Quantity In Cart Less Than Your Quntity',
     'can_not_delete'=>'Cannot delete :text',
     'no_model'=>'No Model Sent',
-    'dashboard_stat' => 'Dashboard Statistics'
+    'dashboard_stat' => 'Dashboard Statistics',
+    'user_logout'=>'User Logout Successfully'
 
     
 ];

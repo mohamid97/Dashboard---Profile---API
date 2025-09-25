@@ -38,4 +38,16 @@ class AuthController extends Controller
 
         return $this->error('Unauthorized', 401);
     }
+
+    public function getData(Request $request){
+        $user = $request->user();
+        return $this->success(new UserResource($user) , __('main.model_details' , ['model'=>'User']));
+    }
+
+    public function logout(Request $request){
+        $request->user()->tokens()->delete();
+        return $this->success(null , __('main.user_logout'));
+    }
+
+
 }

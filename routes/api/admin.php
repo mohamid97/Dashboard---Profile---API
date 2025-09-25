@@ -16,7 +16,10 @@ Route::prefix('v1')->middleware('ckeckLang')->group(function () {
 
 
     Route::post('login', 'AuthController@login');
+    
     Route::middleware('auth:sanctum')->group(function () {
+        Route::get('get-user', 'AuthController@getData');
+        Route::post('logout', 'AuthController@logout');
         Route::post('store', 'CrudController@store')->middleware('checkPermision:create');
         Route::post('update', 'CrudController@update')->middleware('checkPermision:update');
         Route::post('delete' , 'CrudController@delete')->middleware('checkPermision:delete');
@@ -27,6 +30,7 @@ Route::prefix('v1')->middleware('ckeckLang')->group(function () {
 
         // home page 
     Route::get('/home' ,'HomeController@index');
+    
 
 
 

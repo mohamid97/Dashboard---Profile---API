@@ -24,7 +24,7 @@ class HomeController extends Controller
                 "mediavideo"=> ["value" => Mediavideo::count()],
                 "ourwork"   => ["value" => Ourwork::count()],
                 "service"   => ["value" => Service::count()],
-                'partners'  => ["value" => Client::count()]
+                'client'  => ["value" => Client::count()]
             ];
         });
 
