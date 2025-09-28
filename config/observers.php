@@ -14,6 +14,7 @@ return [
         \App\Models\Api\Admin\Blog::class => \App\Observers\Admin\Blog\BlogObserver::class,
         \App\Models\Api\Admin\Ourteam::class => \App\Observers\Admin\Ourteam\OurteamObserver::class,
         \App\Models\Api\Admin\Mediaimage::class => \App\Observers\Admin\Mediaimage\MediaimageObserver::class,
+        \App\Models\Api\Admin\Brand::class      => \App\Observers\Admin\Brand\BrandObserver::class
     ],
 
     

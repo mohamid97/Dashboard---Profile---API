@@ -10,6 +10,8 @@ use App\Http\Requests\Api\Admin\Blog\BlogStoreRequest;
 use App\Http\Requests\Api\Admin\Blog\BlogUpdateRequest;
 use App\Http\Requests\Api\Admin\Branch\BranchStoreRequest;
 use App\Http\Requests\Api\Admin\Branch\BranchUpdateRequest;
+use App\Http\Requests\Api\Admin\Brand\BrandStoreRequest;
+use App\Http\Requests\Api\Admin\Brand\BrandUpdateRequest;
 use App\Http\Requests\Api\Admin\Category\CategoryStoreRequest;
 use App\Http\Requests\Api\Admin\Category\CategoryUpdateRequest;
 use App\Http\Requests\Api\Admin\Client\ClientStoreRequest;
@@ -148,6 +150,10 @@ class ModelRequestFactory
                 'store'=> MediaVideoStoreRequest::class,
                 'update'=> MediaVideoUpdateRequest::class
             ],
+            'brand'=>[
+                'store'  =>BrandStoreRequest::class,
+                'update' =>BrandUpdateRequest::class
+            ]
             
 
         ];

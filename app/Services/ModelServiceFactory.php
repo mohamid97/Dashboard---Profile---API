@@ -32,6 +32,7 @@ class ModelServiceFactory
         'ourteam'=>\App\Services\Admin\Ourteam\OurteamService::class,
         'mediaimage'=>\App\Services\Admin\Mediaimage\MediaimageService::class,
         'mediavideo'=>\App\Services\Admin\Mediavideo\MediavideoService::class,
+        'brand'     => \App\Services\Admin\Brand\BrandService::class
       
     ];
 
