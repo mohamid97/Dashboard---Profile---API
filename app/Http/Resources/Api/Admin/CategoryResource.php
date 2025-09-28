@@ -16,6 +16,7 @@ class CategoryResource extends JsonResource
     public function toArray(Request $request): array
     {
 
+     
         $parentData= null;
         if ( $this->parent) {
             $parentData = [
@@ -41,6 +42,15 @@ class CategoryResource extends JsonResource
             'order' => $this->order,
             'created_at' => $this->created_at->format('Y-m-d'),
             'updated_at' => $this->updated_at->format('Y-m-d'),
+            'brands' => $this->whenLoaded('brands', function () {
+                return $this->brands->map(function ($brand) {
+                   
+                        return [
+                            'id' => $brand->id,
+                            'title' => $brand->title,
+                        ];
+                });
+            })
         ];
 
     }

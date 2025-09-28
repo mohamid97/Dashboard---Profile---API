@@ -23,5 +23,13 @@ class Category extends Model implements TranslatableContract
     public function parent(){
       return $this->belongsTo(Category::class , 'parent_id');
     }
+
+      public function brands()
+    {
+        return $this->belongsToMany(Brand::class, 'brand_category');
+    }
+
+
+    
     
 }

@@ -10,6 +10,7 @@ class CategoryService extends BaseModelService
 {
     use StoreMultiLang;
     protected string $modelClass = Category::class;
+    protected array $relations = ['brands'];
 
 
 
@@ -29,6 +30,9 @@ class CategoryService extends BaseModelService
         $category = parent::store($this->getBasicColumn(['category_image', 'thumbnail', 'breadcrumb' , 'order' , 'parent_id']));
         $this->data['slug']  = $this->createSlug($this->data);
         $this->processTranslations($category, $this->data, ['title', 'slug', 'des' , 'alt_image' , 'title_image' , 'small_des' , 'meta_title' , 'meta_des']);  
+        if (!empty($this->data['brands'])) {
+            $category->brands()->attach($this->data['brands']);
+        }
         return $category;
         
     }
@@ -38,6 +42,7 @@ class CategoryService extends BaseModelService
         $this->uploadSingleImage(['category_image' , 'thumbnail' , 'breadcrumb'], 'uploads/categories'); 
         $category = parent::update($id , $this->getBasicColumn( ['category_image', 'thumbnail', 'breadcrumb' , 'order' , 'parent_id']));
         $this->processTranslations($category, $this->data, ['title' , 'slug', 'des' , 'alt_image' , 'title_image' , 'small_des' , 'meta_title' , 'meta_des']);
+        $this->attachBrands($category);
         return $category;        
     }
     
@@ -63,6 +68,16 @@ class CategoryService extends BaseModelService
     public function type(Builder $query, string $type)
     {
         return $query->where('type', $type);
+    }
+
+    private function attachBrands(Category $category){
+        
+            if (!empty($this->data['brands'])) {
+                $category->brands()->sync($this->data['brands']); 
+            } else {
+                $category->brands()->detach(); 
+            }
+       
     }
 
 

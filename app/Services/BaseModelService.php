@@ -24,6 +24,7 @@ abstract class BaseModelService
     public function all($request){
 
         if(is_array($this->relations) && !empty($this->relations)){
+         
            $query = $this->modelClass::with($this->relations);
         }else{
             $query = $this->modelClass::query();
@@ -47,6 +48,9 @@ abstract class BaseModelService
     }
 
     public function view($id){
+      if(is_array($this->relations) && !empty($this->relations)){
+        return $this->modelClass::with($this->relations)->find($id);
+      }
         return $this->modelClass::find($id);
     }
 

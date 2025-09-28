@@ -25,7 +25,8 @@ return [
     'can_not_delete'=>'Cannot delete :text',
     'no_model'=>'No Model Sent',
     'dashboard_stat' => 'Dashboard Statistics',
-    'user_logout'=>'User Logout Successfully'
+    'user_logout'=>'User Logout Successfully',
+    'brands'=>'brands'
 
     
 ];

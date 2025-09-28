@@ -42,6 +42,8 @@ class CategoryStoreRequest extends FormRequest
             'meta_title.*' => 'nullable|max:255',
             'meta_des.*' => 'nullable|max:255',
             'order'=>'nullable|integer|unique:categories,order',
+            'brands' => 'nullable|array',
+            'brands.*' => 'exists:brands,id',
             
         ];
         

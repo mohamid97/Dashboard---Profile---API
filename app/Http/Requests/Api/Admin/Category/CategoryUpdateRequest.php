@@ -39,6 +39,8 @@ class CategoryUpdateRequest extends FormRequest
             'meta_title.*' => 'nullable|max:255',
             'meta_des.*' => 'nullable|max:255',
             'order'=>'nullable|integer|unique:categories,order,except,id',
+            'brands' => 'nullable|array',
+            'brands.*' => 'exists:brands,id',
         ];
     }
 

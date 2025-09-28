@@ -20,4 +20,12 @@ class Brand extends Model implements TranslatableContract
     {
       return $date->format('Y-m-d'); 
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'brand_category');
+    }
+
+
+    
 }

@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::prefix('v1')->middleware('ckeckLang')->group(function () {
         Route::post('view' , 'CrudController@view')->middleware('checkPermision:view');
         Route::post('gallery/store','CrudController@storeGallery')->middleware('checkPermision:create');
         Route::post('gallery/all','CrudController@viewGallery')->middleware('checkPermision:view');
+
+        // get brands with category id
+        Route::post('category/brands' ,"CategoryController@getBrand");
 
         // home page 
     Route::get('/home' ,'HomeController@index');
